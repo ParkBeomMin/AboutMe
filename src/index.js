@@ -1,3 +1,7 @@
-import App from "./App.js";
+import App from './App.js';
 
-new App({ $target: document.querySelector("#app") }).render();
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('beom 111');
+});
+
+new App({ $target: document.querySelector('#app') }).render();

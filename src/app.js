@@ -1,29 +1,50 @@
-import Home from "./pages/Home.js";
+import Home from './pages/Home.js';
+import New from './pages/New.js';
 export default class App {
     constructor({ $target }) {
         this.$target = $target;
     }
 
     render() {
-        const $main = document.createElement("main");
-        $main.setAttribute("id", "page_content");
+        console.log('beom 1111');
+
+        const $main = document.createElement('main');
+        $main.setAttribute('id', 'page_content');
 
         this.$target.appendChild($main);
 
-        const home = new Home({ $target: $main });
+        const homePage = new Home({ $target: $main });
+        const newPage = new New({ $target: $main });
         // const signUpPage = new SignUpPage({ $target: $main });
 
-        home.render();
+        console.log('beom window', window);
+        console.log('beom window.history', window.history);
+        switch (window.location.pathname) {
+            case '/':
+                homePage.render();
+                break;
+            case '/new':
+                newPage.render();
+                break;
+            default:
+                break;
+        }
 
-        // document.addEventListener("urlChange", ({ detail: { url } }) => {
-        //     $main.innerHTML = "";
+        // homePage.render();
+
+        // window.history.pushState('', '', url);
+        // const urlChange = new CustomEvent('urlChange', { detail: { url } });
+        // document.dispatchEvent(urlChange);
+
+        // document.addEventListener('urlChange', ({ detail: { url } }) => {
+        //     $main.innerHTML = '';
 
         //     switch (url) {
-        //         case "/web/":
+        //         case '/':
         //             homePage.render();
         //             break;
-        //         case "/web/signup":
-        //             signUpPage.render();
+        //         case '/new':
+        //             newPage.render();
         //             break;
         //         default:
         //             break;
