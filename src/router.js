@@ -1,4 +1,4 @@
-import CssController from './lib/cssController.js';
+// import CssController from './lib/cssController.js';
 export default class Router {
     constructor({ view, route }) {
         this.view = view;
@@ -29,7 +29,7 @@ export default class Router {
 
     renderPage(url) {
         this.view.innerHTML = '';
-        window.CssController.reset();
+        // window.CssController.reset();
         console.log('beom this.route213123', this.route, url);
 
         try {

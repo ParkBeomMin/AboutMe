@@ -2,7 +2,7 @@ import Home from './pages/Home.js';
 import New from './pages/New.js';
 import About from './pages/About.js';
 import Router from './router.js';
-import CssController from './lib/cssController.js';
+// import CssController from './lib/cssController.js';
 
 export default class App {
     constructor({ $target }) {
@@ -37,7 +37,7 @@ export default class App {
                 },
             ],
         });
-        window.CssController = new CssController();
+        // window.CssController = new CssController();
 
         // homePage.render();
 

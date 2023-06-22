@@ -3,3 +3,7 @@ node_modules
 dist
 
 package-lock.json
+
+.firebase
+.firebaserc
+firebase.json

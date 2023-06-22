@@ -1,6 +1,6 @@
 {
     "hosting": {
         "site": "about-me-tree",
-        "public": "dist"
+        "public": "./dist"
     }
 }

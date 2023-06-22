@@ -1,4 +1,5 @@
 import DB from '../lib/db.js';
+// import AboutMeStyle from '@/assets/css/AboutMe.css';
 export default class AboutMe {
     constructor({ $target, id }) {
         this.$target = $target;
@@ -7,12 +8,12 @@ export default class AboutMe {
 
     async render() {
         const db = new DB();
-        const { color = '', aboutList } = this.id === 'new' ? await db.getAllAbout() : await db.getAboutMe(this.id);
+        const { color = '', aboutList, num = 1 } = this.id === 'new' ? await db.getAllAbout() : await db.getAboutMe(this.id);
         console.log('beom color aboutList', color, aboutList);
 
         console.log('beom getAboutMe', new DB().getAboutMe());
 
-        window.CssController.add('AboutMe');
+        // window.CssController.add('AboutMe');
         const $div = document.createElement('div');
         $div.setAttribute('class', 'wrap');
         const $ground = document.createElement('div');
@@ -21,7 +22,7 @@ export default class AboutMe {
         $sky.setAttribute('class', 'sky');
         const $aboutMe = document.createElement('img');
         $aboutMe.setAttribute('class', 'about-me');
-        $aboutMe.setAttribute('src', `./src/assets/images/1/tree.svg`);
+        // $aboutMe.setAttribute('src', require(`@/assets/images/${num}/tree.svg`));
         $aboutMe.style.width = '30px';
         $aboutMe.style.height = '30px';
         $aboutMe.style.filter = 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)';
