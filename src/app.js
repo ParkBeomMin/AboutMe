@@ -1,5 +1,8 @@
 import Home from './pages/Home.js';
 import New from './pages/New.js';
+import Router from './router.js';
+import CssController from './lib/CssController.js';
+
 export default class App {
     constructor({ $target }) {
         this.$target = $target;
@@ -15,20 +18,20 @@ export default class App {
 
         const homePage = new Home({ $target: $main });
         const newPage = new New({ $target: $main });
-        // const signUpPage = new SignUpPage({ $target: $main });
-
-        console.log('beom window', window);
-        console.log('beom window.history', window.history);
-        switch (window.location.pathname) {
-            case '/':
-                homePage.render();
-                break;
-            case '/new':
-                newPage.render();
-                break;
-            default:
-                break;
-        }
+        new Router({
+            view: $main,
+            route: [
+                {
+                    url: '/me/:id',
+                    page: homePage,
+                },
+                {
+                    url: '/',
+                    page: newPage,
+                },
+            ],
+        });
+        window.CssController = new CssController();
 
         // homePage.render();
 

@@ -1,13 +1,10 @@
-// import person from "../assets/css/person.css";
-
-import CssImport from '../lib/CssImport.js';
 export default class AboutMe {
     constructor({ $target }) {
         this.$target = $target;
     }
 
     render() {
-        new CssImport({ cssName: 'AboutMe' });
+        window.CssController.add('AboutMe');
         const $div = document.createElement('div');
         $div.setAttribute('class', 'wrap');
         const $ground = document.createElement('div');
