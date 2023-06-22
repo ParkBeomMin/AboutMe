@@ -1,9 +1,17 @@
+import DB from '../lib/db.js';
 export default class AboutMe {
-    constructor({ $target }) {
+    constructor({ $target, id }) {
         this.$target = $target;
+        this.id = id;
     }
 
-    render() {
+    async render() {
+        const db = new DB();
+        const { color = '', aboutList } = this.id === 'new' ? await db.getAllAbout() : await db.getAboutMe(this.id);
+        console.log('beom color aboutList', color, aboutList);
+
+        console.log('beom getAboutMe', new DB().getAboutMe());
+
         window.CssController.add('AboutMe');
         const $div = document.createElement('div');
         $div.setAttribute('class', 'wrap');
@@ -49,28 +57,15 @@ export default class AboutMe {
         ];
         const $textContainer = document.createElement('div');
         $textContainer.setAttribute('class', 'text-container');
-        tmpData.forEach((td) => {
+        aboutList.forEach((al) => {
             const $text = document.createElement('span');
             $text.setAttribute('class', 'falling-text');
             $text.style.animationDuration = `${Math.random() + 2}s`;
-            $text.textContent = td;
+            $text.textContent = al.content;
             $textContainer.appendChild($text);
         });
         $div.appendChild($textContainer);
 
         this.$target.appendChild($div);
-    }
-
-    cssImport() {
-        if (!document.getElementById('personCSS')) {
-            const head = document.getElementsByTagName('head')[0];
-            const link = document.createElement('link');
-            link.id = 'personCSS';
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = './src/assets/css/person.css';
-            link.media = 'all';
-            head.appendChild(link);
-        }
     }
 }

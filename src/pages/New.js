@@ -1,18 +1,19 @@
+import DB from '../lib/db.js';
 export default class New {
     constructor({ $target }) {
         this.$target = $target;
     }
-    render() {
-        console.log('beom new render');
-
+    async render() {
+        const db = new DB();
+        const allList = await db.getAllAbout();
         const $div = document.createElement('div');
         $div.setAttribute('class', 'wrap');
-
         const $button = document.createElement('button');
         $button.setAttribute('class', 'create-btn');
         $button.textContent = '생성하고 공유하기';
-        $button.addEventListener('click', (ev) => {
-            window.urlChange(`/me/${this.generateUuidv4()}`);
+        $button.addEventListener('click', async (ev) => {
+            const { id } = await new DB().setAboutMe();
+            window.urlChange(`/about/${id}`);
             window.navigator.clipboard.writeText('test');
         });
         $div.appendChild($button);

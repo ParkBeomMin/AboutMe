@@ -4,8 +4,8 @@ export default class Home {
         this.$target = $target;
     }
     render() {
-        console.log('beom window.location.pathname', window.location.hash);
+        const id = window.location.hash.split('#/me/')[1];
 
-        new AboutMe({ $target: this.$target }).render();
+        new AboutMe({ $target: this.$target, id }).render();
     }
 }

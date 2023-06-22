@@ -1,9 +1,11 @@
-import CssController from './lib/CssController.js';
+import CssController from './lib/cssController.js';
 export default class Router {
     constructor({ view, route }) {
         this.view = view;
         this.route = route;
+        console.log('beomRouter ', this.route);
         this.setRoute();
+
         window.urlChange = (url) => {
             this.urlChange(url);
         };
@@ -28,7 +30,7 @@ export default class Router {
     renderPage(url) {
         this.view.innerHTML = '';
         window.CssController.reset();
-        console.log('beom this.route', this.route, url);
+        console.log('beom this.route213123', this.route, url);
 
         try {
             console.log('beom this.route.filter((r) => r.url === url)[0]', this.route.filter((r) => this.matchUrl(r.url, url))[0]);

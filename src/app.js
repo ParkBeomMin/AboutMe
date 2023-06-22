@@ -1,7 +1,8 @@
 import Home from './pages/Home.js';
 import New from './pages/New.js';
+import About from './pages/About.js';
 import Router from './router.js';
-import CssController from './lib/CssController.js';
+import CssController from './lib/cssController.js';
 
 export default class App {
     constructor({ $target }) {
@@ -18,6 +19,7 @@ export default class App {
 
         const homePage = new Home({ $target: $main });
         const newPage = new New({ $target: $main });
+        const aboutPage = new About({ $target: $main });
         new Router({
             view: $main,
             route: [
@@ -28,6 +30,10 @@ export default class App {
                 {
                     url: '/',
                     page: newPage,
+                },
+                {
+                    url: '/about/:id',
+                    page: aboutPage,
                 },
             ],
         });
