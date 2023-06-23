@@ -50,36 +50,19 @@ export default class About {
     createInputBox() {
         const id = window.location.hash.split('#/about/')[1];
 
-        const $inputBox = document.createElement('div');
+        const $inputBox = document.createElement('form');
         $inputBox.setAttribute('class', 'input-box');
 
         const $input = document.createElement('input');
         $input.setAttribute('type', 'text');
-        $input.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter' && !!e.target.value) {
-                const cookie = new Cookie().getCookie(`aboutme_${id}`);
-                console.log('beom cookie', cookie);
-                if (cookie === 'done') {
-                    Swal.fire({ html: '24시간에 한 번만 친구에게 마음을 전달할 수 있습니다.' });
-                    return;
-                }
-
-                new DB().setAbout({ id, content: e.target.value });
-                e.target.value = '';
-                new Cookie().setCookie(`aboutme_${id}`, 'done', { 'max-age': 24 * 60 * 60 });
-                Swal.fire({ html: '친구에게 잘 전달되었습니다.<br>나의 새싹도 만들어보세요' }).then((v) => {
-                    if (v.value) {
-                        window.urlChange(`/`);
-                    }
-                });
-            }
-        });
         const $sendBtn = document.createElement('button');
         $sendBtn.setAttribute('class', 'about-send-btn');
         const $sendBtnImg = document.createElement('img');
         $sendBtnImg.setAttribute('src', require('@/assets/images/send.svg'));
         $sendBtn.appendChild($sendBtnImg);
-        $sendBtn.addEventListener('click', () => {
+        $inputBox.appendChild($input);
+        $inputBox.appendChild($sendBtn);
+        $inputBox.addEventListener('submit', () => {
             const cookie = new Cookie().getCookie(`aboutme_${id}`);
             console.log('beom cookie', cookie);
             if (cookie === 'done') {
@@ -98,9 +81,6 @@ export default class About {
                 });
             }
         });
-
-        $inputBox.appendChild($input);
-        $inputBox.appendChild($sendBtn);
         return $inputBox;
     }
 }
