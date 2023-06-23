@@ -1,26 +1,19 @@
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
 // import { getFirestore, collection, getDocs, addDoc, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
-import { initializeApp } from "firebase/app";
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    addDoc,
-    doc,
-    getDoc,
-} from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
 
 // import { } from 'firebase/<service>';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBOvBVH1WCfXQ9okJnZBxA8ZAYqZJJ870c",
-    authDomain: "howltalk-57cde.firebaseapp.com",
-    databaseURL: "https://howltalk-57cde.firebaseio.com",
-    projectId: "howltalk-57cde",
-    storageBucket: "howltalk-57cde.appspot.com",
-    messagingSenderId: "1098685513263",
-    appId: "1:1098685513263:web:ea87ead18d9a4371db50da",
+    apiKey: 'AIzaSyBOvBVH1WCfXQ9okJnZBxA8ZAYqZJJ870c',
+    authDomain: 'howltalk-57cde.firebaseapp.com',
+    databaseURL: 'https://howltalk-57cde.firebaseio.com',
+    projectId: 'howltalk-57cde',
+    storageBucket: 'howltalk-57cde.appspot.com',
+    messagingSenderId: '1098685513263',
+    appId: '1:1098685513263:web:ea87ead18d9a4371db50da',
 };
 
 export default class DB {
@@ -30,7 +23,7 @@ export default class DB {
     }
 
     async setAboutMe() {
-        const col = collection(this.db, "users");
+        const col = collection(this.db, 'users');
         const ds = await addDoc(col, {
             treeFilter: this.generateFilter(),
             groundColor: this.generateRGB(),
@@ -40,18 +33,18 @@ export default class DB {
     }
 
     async setAbout({ id, content }) {
-        const col = collection(this.db, "users", id, "about");
+        const col = collection(this.db, 'users', id, 'about');
         await addDoc(col, { content, color: this.generateRGB() });
 
-        const cols = collection(this.db, "abouts");
+        const cols = collection(this.db, 'abouts');
         await addDoc(cols, { content, color: this.generateRGB() });
     }
 
     async getAboutMe(id) {
         try {
-            const docRef = doc(this.db, "users", id);
+            const docRef = doc(this.db, 'users', id);
             const docSnap = await getDoc(docRef);
-            const col = collection(this.db, "users", id, "about");
+            const col = collection(this.db, 'users', id, 'about');
             const docSnaps = await getDocs(col);
             return docSnap.exists()
                 ? {
@@ -66,7 +59,7 @@ export default class DB {
     }
 
     async getAllAbout() {
-        const col = collection(this.db, "abouts");
+        const col = collection(this.db, 'abouts');
         const snapshot = await getDocs(col);
         return { aboutList: snapshot.docs.map((doc) => doc.data()) };
     }
@@ -80,14 +73,8 @@ export default class DB {
     }
 
     generateFilter() {
-        return `invert(${Math.floor(Math.random() * 99)}%) sepia(${Math.floor(
-            Math.random() * 100
-        )}%) saturate(${Math.floor(
-            Math.random() * 1000
-        )}%) hue-rotate(${Math.floor(
+        return `invert(${Math.floor(Math.random() * 99)}%) sepia(${Math.floor(Math.random() * 100)}%) saturate(${Math.floor(Math.random() * 1000)}%) hue-rotate(${Math.floor(
             Math.random() * 360
-        )}deg) brightness(${Math.floor(
-            Math.random() * 1000
-        )}%) contrast(${Math.floor(Math.random() * 1000)}%)`;
+        )}deg) brightness(${Math.floor(Math.random() * 499)}%) contrast(${Math.floor(Math.random() * 1000)}%)`;
     }
 }
