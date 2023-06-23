@@ -1,7 +1,7 @@
-import Home from './pages/Home.js';
-import New from './pages/New.js';
-import About from './pages/About.js';
-import Router from './router.js';
+import Home from "./pages/Home.js";
+import New from "./pages/New.js";
+import About from "./pages/About.js";
+import Router from "./router.js";
 // import CssController from './lib/cssController.js';
 
 export default class App {
@@ -10,10 +10,10 @@ export default class App {
     }
 
     render() {
-        console.log('beom 1111');
+        console.log("beom 1111");
 
-        const $main = document.createElement('main');
-        $main.setAttribute('id', 'page_content');
+        const $main = document.createElement("main");
+        $main.setAttribute("id", "page_content");
 
         this.$target.appendChild($main);
 
@@ -24,19 +24,19 @@ export default class App {
             view: $main,
             route: [
                 {
-                    url: '/me/:id',
+                    url: "/me/:id",
                     page: homePage,
-                    css: ['AboutMe'],
+                    css: ["AboutMe", "Header"],
                 },
                 {
-                    url: '/',
+                    url: "/",
                     page: newPage,
-                    css: ['New'],
+                    css: ["New"],
                 },
                 {
-                    url: '/about/:id',
+                    url: "/about/:id",
                     page: aboutPage,
-                    css: ['About'],
+                    css: ["About"],
                 },
             ],
         });

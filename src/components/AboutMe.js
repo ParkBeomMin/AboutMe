@@ -28,14 +28,13 @@ export default class AboutMe {
             size = "200px";
         }
 
-        console.log("beom getAboutMe", new DB().getAboutMe());
-
         // window.CssController.add('AboutMe');
         const $div = document.createElement("div");
         $div.setAttribute("class", "wrap");
         const $ground = document.createElement("div");
         $ground.setAttribute("class", "ground");
         $ground.style.backgroundColor = `${groundColor}`;
+        $ground.style.borderColor = `${groundColor}`;
         const $sky = document.createElement("div");
         $sky.setAttribute("class", "sky");
         const $aboutMe = document.createElement("img");
@@ -44,6 +43,8 @@ export default class AboutMe {
         $aboutMe.style.width = size;
         $aboutMe.style.height = size;
         $aboutMe.style.filter = treeFilter;
+        $aboutMe.innerHTML = require(`@/assets/images/${type}.svg`);
+        console.log($aboutMe.childNodes);
         // "invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)";
         console.log($aboutMe);
         $div.appendChild($sky);
