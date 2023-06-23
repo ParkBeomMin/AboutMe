@@ -26,14 +26,17 @@ export default class App {
                 {
                     url: '/me/:id',
                     page: homePage,
+                    css: ['AboutMe'],
                 },
                 {
                     url: '/',
                     page: newPage,
+                    css: ['New'],
                 },
                 {
                     url: '/about/:id',
                     page: aboutPage,
+                    css: ['About'],
                 },
             ],
         });

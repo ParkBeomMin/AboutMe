@@ -35,7 +35,9 @@ export default class Router {
         try {
             console.log('beom this.route.filter((r) => r.url === url)[0]', this.route.filter((r) => this.matchUrl(r.url, url))[0]);
 
-            this.route.filter((r) => this.matchUrl(r.url, url))[0].page.render();
+            const to = this.route.filter((r) => this.matchUrl(r.url, url))[0];
+            to.page.render();
+            to.css ? to.css.forEach((c) => require(`@/assets/css/${c}.css`)) : null;
         } catch (e) {
             this.route.filter((r) => r.url === '/')[0].page.render();
             console.error(e);
