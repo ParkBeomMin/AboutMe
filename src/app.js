@@ -31,12 +31,12 @@ export default class App {
                 {
                     url: "/",
                     page: newPage,
-                    css: ["New"],
+                    css: ["New", "Layer"],
                 },
                 {
                     url: "/about/:id",
                     page: aboutPage,
-                    css: ["About"],
+                    css: ["About", "Layer"],
                 },
             ],
         });

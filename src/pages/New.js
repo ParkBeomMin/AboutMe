@@ -1,6 +1,6 @@
 import DB from "../lib/db.js";
 import AboutMe from "@/components/AboutMe";
-// import NewCss from '@/assets/css/New.css';
+import PasswordLayer from "../components/PasswordLayer.js";
 import Swal from "sweetalert2";
 export default class New {
     constructor({ $target }) {
@@ -14,17 +14,22 @@ export default class New {
         $button.setAttribute("class", "create-btn");
         $button.textContent = "나의 새싹 만들기";
         $button.addEventListener("click", async () => {
-            const { id } = await db.setAboutMe();
-            window.navigator.clipboard.writeText(
-                `${window.location.host}/#/about/${id}`
-            );
-            Swal.fire({
-                html: "나의 새싹이 생성되었습니다.<br>클립보드에 복사된 링크로<br>친구들에게 공유해보세요!",
-            }).then((v) => {
-                if (v.value || v.dismiss) {
-                    window.urlChange(`/me/${id}`);
-                }
-            });
+            new PasswordLayer({
+                $target: this.$target,
+                callback: async ({ password }) => {
+                    const { id } = await db.setAboutMe({ password });
+                    window.navigator.clipboard.writeText(
+                        `${window.location.host}/#/about/${id}`
+                    );
+                    Swal.fire({
+                        html: "나의 새싹이 생성되었습니다.<br>클립보드에 복사된 링크로<br>친구들에게 공유해보세요!",
+                    }).then((v) => {
+                        if (v.value || v.dismiss) {
+                            window.urlChange(`/me/${id}`);
+                        }
+                    });
+                },
+            }).render();
         });
         const $info = document.createElement("span");
         $info.setAttribute("class", "info");

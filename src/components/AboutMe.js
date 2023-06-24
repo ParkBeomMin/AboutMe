@@ -55,7 +55,7 @@ export default class AboutMe {
         aboutList.forEach((al) => {
             const $text = document.createElement("span");
             $text.setAttribute("class", "falling-text");
-            $text.style.animationDuration = `${Math.random() * 10 + 1}s`;
+            $text.style.animationDuration = `${Math.random() * 10 + 4}s`;
             $text.style.left = `${Math.random() * 100}%`;
             $text.style.color = al.color;
             $text.textContent = al.content;

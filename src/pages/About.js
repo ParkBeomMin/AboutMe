@@ -1,10 +1,12 @@
 import DB from "../lib/db.js";
-import AboutStyle from "@/assets/css/About.css";
+// import AboutStyle from "@/assets/css/About.css";
 import Swal from "sweetalert2";
 import Cookie from "@/lib/cookie.js";
+import PasswordLayer from "../components/PasswordLayer.js";
 export default class About {
     constructor({ $target }) {
         this.$target = $target;
+        this.id = window.location.hash.split("#/about/")[1];
     }
 
     render() {
@@ -32,10 +34,31 @@ export default class About {
             window.urlChange("/");
         });
 
-        $div.appendChild($title);
-        $div.appendChild($inputBox);
-        $div.appendChild($info);
-        $div.appendChild($goNew);
+        const $goMy = document.createElement("a");
+        $goMy.setAttribute("class", "go-my");
+        $goMy.textContent = "내 새싹 보러가기💚";
+        $goMy.addEventListener("click", () => {
+            new PasswordLayer({
+                $target: this.$target,
+                callback: async ({ password }) => {
+                    const isLogin = await new DB().login({
+                        id: this.id,
+                        password,
+                    });
+                    if (isLogin) {
+                        window.urlChange(`/me/${this.id}`);
+                    } else {
+                        Swal.fire({ html: "비밀번호를 잘못입력하였습니다." });
+                    }
+                },
+            }).render();
+        });
+
+        // $div.appendChild($title);
+        // $div.appendChild($inputBox);
+        // $div.appendChild($info);
+        // $div.appendChild($goNew);
+        $div.append($title, $inputBox, $info, $goNew, $goMy);
 
         // const $button = document.createElement('button');
         // $button.setAttribute('class', 'create-btn');

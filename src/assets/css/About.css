@@ -41,9 +41,15 @@
     font-size: 4px;
     color: skyblue;
     text-decoration: underline;
+    align-items: center;
 }
 
 .go-new img {
     width: 16px;
     height: 16px;
+}
+
+.go-my {
+    margin-top: 8px;
+    font-size: 16px;
 }

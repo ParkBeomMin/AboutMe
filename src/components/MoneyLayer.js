@@ -12,7 +12,7 @@ export default class MoneyLayer {
         $div.setAttribute("class", "layer-container");
 
         const $h3 = document.createElement("h3");
-        $h3.textContent = "개발자 사주기";
+        $h3.textContent = "개발자 밥 사주기🍚";
 
         const $closeBtn = document.createElement("button");
         $closeBtn.setAttribute("class", "close-btn");

@@ -8,6 +8,8 @@ import {
     addDoc,
     doc,
     getDoc,
+    query,
+    where,
 } from "firebase/firestore";
 
 // import { } from 'firebase/<service>';
@@ -29,12 +31,35 @@ export default class DB {
         this.db = getFirestore(app);
     }
 
-    async setAboutMe() {
+    async login({ id, password }) {
+        let isLogin = false;
+        // const col = collection(this.db, "users", id);
+        console.log("login");
+        const q = query(
+            collection(this.db, "users"),
+            where("password", "==", password)
+        );
+        console.log(q);
+
+        const querySnapshot = await getDocs(q);
+        console.log(querySnapshot);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            if (doc.id === id) {
+                isLogin = true;
+            }
+        });
+        return isLogin;
+    }
+
+    async setAboutMe({ password }) {
         const col = collection(this.db, "users");
         const ds = await addDoc(col, {
             treeFilter: this.generateFilter(),
             groundColor: this.generateRGB(),
             num: Math.floor(Math.random() * 5) + 1,
+            password,
         });
         return { id: ds.id };
     }
