@@ -11,19 +11,11 @@ import {
     query,
     where,
 } from "firebase/firestore";
+import { firebaseConfig } from "../config";
 
 // import { } from 'firebase/<service>';
 
 // TODO: Replace the following with your app's Firebase project configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyBOvBVH1WCfXQ9okJnZBxA8ZAYqZJJ870c",
-    authDomain: "howltalk-57cde.firebaseapp.com",
-    databaseURL: "https://howltalk-57cde.firebaseio.com",
-    projectId: "howltalk-57cde",
-    storageBucket: "howltalk-57cde.appspot.com",
-    messagingSenderId: "1098685513263",
-    appId: "1:1098685513263:web:ea87ead18d9a4371db50da",
-};
 
 export default class DB {
     constructor() {
