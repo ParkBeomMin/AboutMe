@@ -25,16 +25,25 @@ export default class App {
                     url: "/me/:id",
                     page: homePage,
                     css: ["AboutMe", "Header"],
+                    title: "나의 새싹 보기",
+                    description:
+                        "친구들이 생각하는 나는 어떤 사람일까? 친구들의 마음이 모여 나의 새싹을 키워보세요!",
                 },
                 {
                     url: "/",
                     page: newPage,
                     css: ["New", "Layer"],
+                    title: "About Me",
+                    description:
+                        "친구들이 생각하는 나는 어떤 사람일까? 친구들의 마음이 모여 나의 새싹을 키워보세요!",
                 },
                 {
                     url: "/about/:id",
                     page: aboutPage,
                     css: ["About", "Layer"],
+                    title: "나는 어떤 사람이야?",
+                    description:
+                        "친구들이 생각하는 나는 어떤 사람일까? 친구들의 마음이 모여 나의 새싹을 키워보세요!",
                 },
             ],
         });

@@ -38,6 +38,10 @@ export default class Router {
             to.css
                 ? to.css.forEach((c) => require(`@/assets/css/${c}.css`))
                 : null;
+            document.title = to.title;
+            document
+                .querySelector(`meta[name='description']`)
+                .setAttribute("content", to.description);
         } catch (e) {
             this.route.filter((r) => r.url === "/")[0].page.render();
             console.error(e);
