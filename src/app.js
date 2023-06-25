@@ -2,6 +2,7 @@ import Home from "./pages/Home.js";
 import New from "./pages/New.js";
 import About from "./pages/About.js";
 import Router from "./router.js";
+import GA from "@/lib/GA";
 // import CssController from './lib/cssController.js';
 
 export default class App {
@@ -10,6 +11,7 @@ export default class App {
     }
 
     render() {
+        new GA();
         const $main = document.createElement("main");
         $main.setAttribute("id", "page_content");
 
