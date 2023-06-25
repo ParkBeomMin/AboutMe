@@ -44,9 +44,6 @@ export default class AboutMe {
         $aboutMe.style.height = size;
         $aboutMe.style.filter = treeFilter;
         $aboutMe.innerHTML = require(`@/assets/images/${type}.svg`);
-        console.log($aboutMe.childNodes);
-        // "invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)";
-        console.log($aboutMe);
         $div.appendChild($sky);
         $div.appendChild($aboutMe);
         $div.appendChild($ground);

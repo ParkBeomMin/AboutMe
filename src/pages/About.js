@@ -10,7 +10,6 @@ export default class About {
     }
 
     render() {
-        console.log("beom window.location.pathname", window.location.hash);
         const $div = document.createElement("div");
         $div.setAttribute("class", "wrap");
 
@@ -89,7 +88,6 @@ export default class About {
         $inputBox.addEventListener("submit", (e) => {
             e.preventDefault();
             const cookie = new Cookie().getCookie(`aboutme_${id}`);
-            console.log("beom cookie", cookie);
             if (cookie === "done") {
                 Swal.fire({
                     html: "24시간에 한 번만 친구에게 마음을 전달할 수 있습니다.",
@@ -98,7 +96,6 @@ export default class About {
             }
 
             if (!!$input.value) {
-                console.log("???");
                 new DB().setAbout({ id, content: $input.value });
                 $input.value = "";
                 new Cookie().setCookie(`aboutme_${id}`, "done", {

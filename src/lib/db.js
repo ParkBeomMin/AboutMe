@@ -34,18 +34,13 @@ export default class DB {
     async login({ id, password }) {
         let isLogin = false;
         // const col = collection(this.db, "users", id);
-        console.log("login");
         const q = query(
             collection(this.db, "users"),
             where("password", "==", password)
         );
-        console.log(q);
-
         const querySnapshot = await getDocs(q);
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
             if (doc.id === id) {
                 isLogin = true;
             }

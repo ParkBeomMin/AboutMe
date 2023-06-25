@@ -3,7 +3,6 @@ export default class Router {
     constructor({ view, route }) {
         this.view = view;
         this.route = route;
-        console.log("beomRouter ", this.route);
         this.setRoute();
 
         window.urlChange = (url) => {
@@ -30,17 +29,11 @@ export default class Router {
     renderPage(url) {
         this.view.innerHTML = "";
         // window.CssController.reset();
-        console.log("beom this.route213123", this.route, url);
 
         const to =
             this.route.filter((r) => this.matchUrl(r.url, url))[0] ||
             this.route.filter((r) => r.url === "/")[0];
         try {
-            console.log(
-                "beom this.route.filter((r) => r.url === url)[0]",
-                this.route.filter((r) => this.matchUrl(r.url, url))[0]
-            );
-
             to.page.render();
             to.css
                 ? to.css.forEach((c) => require(`@/assets/css/${c}.css`))
@@ -53,7 +46,6 @@ export default class Router {
 
     matchUrl(a, b) {
         const index = a.indexOf(":");
-        console.log("beom ");
 
         if (index > -1) {
             return a.substring(0, index) === b.substring(0, index);

@@ -4,8 +4,21 @@ export default class PasswordLayer {
         this.callback = callback;
     }
     render() {
+        if (document.querySelector(".layer-container")) {
+            document.querySelector(".layer-container").outerHTML = "";
+            return;
+        }
         const $div = document.createElement("div");
         $div.setAttribute("class", "layer-container");
+
+        const $closeBtn = document.createElement("button");
+        $closeBtn.setAttribute("class", "close-btn");
+        const $closeImg = document.createElement("img");
+        $closeImg.setAttribute("src", require("@/assets/images/close.svg"));
+        $closeBtn.appendChild($closeImg);
+        $closeBtn.addEventListener("click", () => {
+            $div.outerHTML = "";
+        });
 
         const $h3 = document.createElement("h3");
         $h3.textContent = "비밀번호";
@@ -36,7 +49,7 @@ export default class PasswordLayer {
         $form.appendChild($input);
         $form.appendChild($button);
 
-        $div.append($h3, $form);
+        $div.append($closeBtn, $h3, $form);
         this.$target.appendChild($div);
     }
 }

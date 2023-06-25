@@ -10,8 +10,6 @@ export default class App {
     }
 
     render() {
-        console.log("beom 1111");
-
         const $main = document.createElement("main");
         $main.setAttribute("id", "page_content");
 
