@@ -2,6 +2,8 @@ import DB from "../lib/db.js";
 import AboutMe from "@/components/AboutMe";
 import PasswordLayer from "../components/PasswordLayer.js";
 import Swal from "sweetalert2";
+import copy from "copy-to-clipboard";
+
 export default class New {
     constructor({ $target }) {
         this.$target = $target;
@@ -18,9 +20,9 @@ export default class New {
                 $target: this.$target,
                 callback: async ({ password }) => {
                     const { id } = await db.setAboutMe({ password });
-                    window.navigator.clipboard.writeText(
-                        `${window.location.host}/#/about/${id}`
-                    );
+
+                    copy(`${window.location.host}/#/about/${id}`);
+
                     Swal.fire({
                         html: "나의 새싹이 생성되었습니다.<br>클립보드에 복사된 링크로<br>친구들에게 공유해보세요!",
                     }).then((v) => {

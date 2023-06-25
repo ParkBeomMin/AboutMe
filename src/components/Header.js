@@ -3,6 +3,8 @@
  */
 import Swal from "sweetalert2";
 import MoneyLayer from "./MoneyLayer";
+import copy from "copy-to-clipboard";
+
 export default class Header {
     constructor({ $target }) {
         this.$target = $target;
@@ -18,10 +20,11 @@ export default class Header {
         $shareBtn.appendChild($shareImg);
         $shareBtn.addEventListener("click", () => {
             const id = window.location.hash.split("#/me/")[1];
+            copy(`${window.location.host}/#/about/${id}`);
 
-            window.navigator.clipboard.writeText(
-                `${window.location.host}/#/about/${id}`
-            );
+            // window.navigator.clipboard.writeText(
+            //     `${window.location.host}/#/about/${id}`
+            // );
             Swal.fire({
                 html: "클립보드에 복사된 링크로<br>친구들에게 공유해보세요!",
             });

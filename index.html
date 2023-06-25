@@ -14,6 +14,17 @@
             property="og:description"
             content="친구들이 생각하는 나는 어떤 사람일까? 친구들의 마음이 모여 나의 새싹을 키워보세요!"
         />
+        <meta
+            name="image"
+            content="<%- require('./src/assets/favicon/favicon-32x32.png') %>"
+        />
+        <meta
+            property="og:image"
+            content="<%- require('./src/assets/favicon/favicon-32x32.png') %>"
+        />
+        <!-- 다음의 태그는 필수는 아니지만, 포함하는 것을 추천함 -->
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <link
             rel="shortcut icon"
             href="<%=htmlWebpackPlugin.files.favicon%>"
@@ -25,10 +36,10 @@
             crossorigin="anonymous"
         ></script>
 
-        <!-- <script type="module" src="./bundle.js"></script> -->
         <title>About Me</title>
     </head>
     <body>
         <div id="app"></div>
+        <script type="module" src="./bundle.js"></script>
     </body>
 </html>
