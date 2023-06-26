@@ -29,6 +29,7 @@ module.exports = {
 
         new CopyWebpackPlugin({
             patterns: [
+                { from: './ads.txt', to: './' },
                 { from: './robots.txt', to: './' },
                 { from: './sitemap.xml', to: './' },
                 { from: './google6b36f453637478f8.html', to: './' },
