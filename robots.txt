@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://about-me-tree.web.app/sitemap.xml
