@@ -1,2 +1,3 @@
-[이미지출처]: https://www.iconfinder.com/
-[favicon생성]: https://favicon.io/
+<img src="./assets/banner.png">
+
+<a href="/AboutMe-Nuxt">About Me - Nuxt 보러가기</a>
