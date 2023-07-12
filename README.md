@@ -1,3 +1,3 @@
-<img src="./assets/banner.png">
+<img src="~/assets/banner.png">
 
-<a href="/AboutMe-Nuxt">About Me - Nuxt 보러가기</a>
+<a href="https://github.com/ParkBeomMin/AboutMe-Nuxt">About Me - Nuxt 보러가기</a>
